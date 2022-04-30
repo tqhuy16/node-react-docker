@@ -1,0 +1,20 @@
+version: '3'
+services:
+  node-sever:
+    build:
+      dockerfile: Dockerfile
+      context: ./server/
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    ports:
+      - '8080:8080'
+  react-app:
+    build:
+      dockerfile: Dockerfile
+      context: ./client/
+    volumes:
+      - ./client:/app   #volumes tat ca file,folder trong client vao thu muc app dc tao trong DockerFile client vao container
+      - /app/node_modules
+    ports:
+      - '3000:3000'
